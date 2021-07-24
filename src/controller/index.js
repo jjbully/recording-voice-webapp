@@ -56,25 +56,25 @@ export class Controller {
   //   })
   // }
 
-  initMediaRecorder = stream => {
-    console.log('abc')
-    this.mediaRecorder = new MediaRecorder(stream)
-    console.log("--------------------", this.mediaRecorder)
-    this.mediaRecorder.ondataavailable = ev => {
-      this.model.chunks.push(ev.data);
-    }
-    this.view.addRecordBtnHandler(this.mediaRecorder.start(), this.model.chunks)
-    this.view.addStopRecordBtnHandler(this.mediaRecorder.stop(), this.model.chunks)
-    this.mediaRecorder.onstop = ev =>{
-      let that = this
-      let blob = new Blob(that.model.chunks, { 'type' : 'audio/webm;' });
-      let mediaURL = window.URL.createObjectURL(blob);
-      this.view.savedMedia.src = mediaURL;
-    }
-    // // console.log('after addListener -------', this.mediaRecorder)
-    // this.view.addRecordBtnHandler(this.mediaRecorder.start(), this.model.chunks)
-    // this.view.addStopRecordBtnHandler(this.mediaRecorder.stop(), this.model.chunks)
-  }
+  // initMediaRecorder = stream => {
+  //   console.log('abc')
+  //   this.mediaRecorder = new MediaRecorder(stream)
+  //   console.log("--------------------", this.mediaRecorder)
+  //   this.mediaRecorder.ondataavailable = ev => {
+  //     this.model.chunks.push(ev.data);
+  //   }
+  //   this.view.addRecordBtnHandler(this.mediaRecorder.start(), this.model.chunks)
+  //   this.view.addStopRecordBtnHandler(this.mediaRecorder.stop(), this.model.chunks)
+  //   this.mediaRecorder.onstop = ev =>{
+  //     let that = this
+  //     let blob = new Blob(that.model.chunks, { 'type' : 'audio/webm;' });
+  //     let mediaURL = window.URL.createObjectURL(blob);
+  //     this.view.savedMedia.src = mediaURL;
+  //   }
+  //   // // console.log('after addListener -------', this.mediaRecorder)
+  //   // this.view.addRecordBtnHandler(this.mediaRecorder.start(), this.model.chunks)
+  //   // this.view.addStopRecordBtnHandler(this.mediaRecorder.stop(), this.model.chunks)
+  // }
 
   // init = async () => {
   //   await this.initStream()
